@@ -1,0 +1,124 @@
+ext {
+    android = [
+            compileSdkVersion: 28,
+            buildToolsVersion: "28.0.3",
+            minSdkVersion    : 19,
+            targetSdkVersion : 28,
+            versionCode      : 1,
+            versionName      : "0.0.1"
+    ]
+
+    dependVersion = [
+            // 测试
+            espressoSdkVersion: "3.0.2",
+            // Google
+            appcompat         : "1.1.0-alpha01",
+            constraintlayout  : "2.0.0-alpha3",
+            material          : "1.1.0-alpha02",
+            recyclerview      : "1.0.0",
+
+            kotlinSdkVerin    : "1.2.71",
+
+            retrofitSdkVersion: "2.4.0",
+            okttpSdkVersion   : "3.11.0",
+            glideSdkVersion   : "4.8.0",
+            rxJava            : "2.2.4",
+            rxAndroid         : "2.1.0",
+            rxKotlin          : "2.3.0",
+            moshiKotlin       : "1.7.0",
+            moshiConverter    : "2.4.0",
+            anko              : "0.10.7",
+            rxBinding         : "3.0.0-alpha2",
+            rxlifecycle3      : "3.0.0",
+            daggerVersion     : "2.20"
+
+
+    ]
+
+
+    googleDeps = [
+
+            "appcompat"          : "androidx.appcompat:appcompat:${dependVersion.appcompat}",
+            "constraintlayout"   : "androidx.constraintlayout:constraintlayout:${dependVersion.constraintlayout}",
+            "material"           : "com.google.android.material:material:${dependVersion.material}",
+            "recyclerview"       : "androidx.recyclerview:recyclerview:${dependVersion.recyclerview}",
+            "annotation"         : "androidx.annotation:annotation:1.0.1",
+            "cardview"           : "androidx.cardview:cardview:1.0.0",
+            "flexbox"            : "com.google.android:flexbox:1.1.0",
+            "bottomNavigationBar": "com.ashokvarma.android:bottom-navigation-bar:2.0.4",
+
+    ]
+
+    retrofit = [
+            "retrofit"                : "com.squareup.retrofit2:retrofit:${dependVersion.retrofitSdkVersion}",
+            "retrofitConverterGson"   : "com.squareup.retrofit2:converter-gson:${dependVersion.retrofitSdkVersion}",
+            "retrofitAdapterRxjava2"  : "com.squareup.retrofit2:adapter-rxjava2:${dependVersion.retrofitSdkVersion}",
+            "okhttp3LoggerInterceptor": "com.squareup.okhttp3:logging-interceptor:${dependVersion.okttpSdkVersion}",
+            "retrofitConverterMoshi"  : "com.squareup.retrofit2:converter-moshi:${dependVersion.moshiConverter}",
+            "retrofitKotlinMoshi"     : "com.squareup.moshi:moshi-kotlin:${dependVersion.moshiKotlin}"
+    ]
+
+    rxJava = [
+            "rxJava"            : "io.reactivex.rxjava2:rxjava:${dependVersion.rxJava}",
+            "rxAndroid"         : "io.reactivex.rxjava2:rxandroid:${dependVersion.rxAndroid}",
+            "rxKotlin"          : "io.reactivex.rxjava2:rxkotlin:${dependVersion.rxKotlin}",
+            "rxlifecycle"       : "com.trello.rxlifecycle3:rxlifecycle-kotlin:${dependVersion.rxlifecycle3}",
+            "rxlifecycleAndroid": "com.trello.rxlifecycle3:rxlifecycle-android-lifecycle-kotlin:${dependVersion.rxlifecycle3}"
+    ]
+
+
+    kotlinDeps = [
+            "kotlin_stdlib_jdk7": "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${dependVersion.kotlinSdkVerin}",
+            "anko"              : "org.jetbrains.anko:anko:${dependVersion.anko}"
+    ]
+
+
+    daggerDeps = [
+            "dagger"       : "com.google.dagger:dagger-android:${dependVersion.daggerVersion}",
+            "daggerAndroid": "com.google.dagger:dagger:${dependVersion.daggerVersion}"
+    ]
+
+
+    commonDeps = [
+
+            "glide"           : "com.github.bumptech.glide:glide:${dependVersion.glideSdkVersion}",
+            "glideOkhttp"     : "com.github.bumptech.glide:okhttp3-integration:${dependVersion.glideSdkVersion}",
+
+            // 更安全的webView
+            "agentweb"        : 'com.just.agentweb:agentweb:4.0.2',
+
+            "eventbus"        : 'org.greenrobot:eventbus:3.1.1',
+            // 屏幕适配
+            "android-autosize": 'me.jessyan:autosize:1.1.0',
+            // 加载动画
+            "spinkit"         : 'com.github.ybq:Android-SpinKit:1.2.0',
+
+            "logger"          : 'com.orhanobut:logger:2.2.0'
+    ]
+
+
+    testDeps = [
+            "junit"             : 'junit:junit:4.12',
+            "runner"            : 'com.android.support.test:runner:1.0.2',
+            "espresso-core"     : "com.android.support.test.espresso:espresso-core:${dependVersion.espressoSdkVersion}",
+            "leakcanary-debug"  : 'com.squareup.leakcanary:leakcanary-android:1.6.3',
+            "leakcanary-release": 'com.squareup.leakcanary:leakcanary-android-no-op:1.6.3'
+    ]
+
+    annotationDeps = [
+            "glideCompiler"         : "com.github.bumptech.glide:compiler:${dependVersion.glideSdkVersion}",
+            "daggerCompiler"        : "com.google.dagger:dagger-compiler:${dependVersion.daggerVersion}",
+            "daggerAndroidProcessor": "com.google.dagger:dagger-android-processor:${dependVersion.daggerVersion}"
+    ]
+
+
+    rxJavaLibs = rxJava.values()
+    googleLibs = googleDeps.values()
+    kotlinLibs = kotlinDeps.values()
+    daggerLibs = daggerDeps.values()
+    commonLibs = commonDeps.values()
+    retrofitLibs = retrofit.values()
+
+    annotationProcessorLibs = annotationDeps.values()
+
+}
