@@ -30,7 +30,7 @@ ext {
             anko              : "0.10.7",
             rxBinding         : "3.0.0-alpha2",
             rxlifecycle3      : "3.0.0",
-            daggerVersion     : "2.20"
+            kodeinVersion     : "6.0.1"
 
 
     ]
@@ -73,9 +73,9 @@ ext {
     ]
 
 
-    daggerDeps = [
-            "dagger"       : "com.google.dagger:dagger-android:${dependVersion.daggerVersion}",
-            "daggerAndroid": "com.google.dagger:dagger:${dependVersion.daggerVersion}"
+    kodeinDeps = [
+            "kodein-di-generic-jvm"        : "org.kodein.di:kodein-di-generic-jvm:${dependVersion.kodeinVersion}",
+            "kodein-di-framework-android-x": "org.kodein.di:kodein-di-framework-android-x:${dependVersion.kodeinVersion}"
     ]
 
 
@@ -92,7 +92,6 @@ ext {
             "android-autosize": 'me.jessyan:autosize:1.1.0',
             // 加载动画
             "spinkit"         : 'com.github.ybq:Android-SpinKit:1.2.0',
-
             "logger"          : 'com.orhanobut:logger:2.2.0'
     ]
 
@@ -107,15 +106,13 @@ ext {
 
     annotationDeps = [
             "glideCompiler"         : "com.github.bumptech.glide:compiler:${dependVersion.glideSdkVersion}",
-            "daggerCompiler"        : "com.google.dagger:dagger-compiler:${dependVersion.daggerVersion}",
-            "daggerAndroidProcessor": "com.google.dagger:dagger-android-processor:${dependVersion.daggerVersion}"
     ]
 
 
     rxJavaLibs = rxJava.values()
     googleLibs = googleDeps.values()
     kotlinLibs = kotlinDeps.values()
-    daggerLibs = daggerDeps.values()
+    kodeinLibs = kodeinDeps.values()
     commonLibs = commonDeps.values()
     retrofitLibs = retrofit.values()
 

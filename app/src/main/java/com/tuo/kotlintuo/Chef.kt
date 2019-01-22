@@ -1,4 +1,4 @@
-package com.tuo.dagger2forandroid
+import com.tuo.kotlintuo.Cooking
 
 /**
  * <pre>

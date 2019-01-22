@@ -1,4 +1,4 @@
-package com.tuo.dagger2forandroid
+package com.tuo.kotlintuo
 
 /**
  * <pre>

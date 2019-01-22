@@ -1,25 +1,22 @@
 package com.tuo.kotlintuo
 
 import android.os.Bundle
-import com.orhanobut.logger.Logger
-import com.tuo.dagger2forandroid.Chef
-import javax.inject.Inject
+import com.tuo.mvp.MVPActivity
+import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : MVPActivity() {
+class MainActivity : MVPActivity<MainPresenter>() {
 
 
-    @Inject
-    lateinit var chef: Chef
+    override val layoutId = R.layout.activity_main
 
-    @Inject
-    lateinit var menu: Menu
+    override val presenter: MainPresenter = MainPresenter(this)
 
-    override fun getLayoutId() = R.layout.activity_main
 
     override fun initActivity(savedInstanceState: Bundle?) {
 
-        Logger.d( menu.toString() + chef.cook())
-
+        textView.setOnClickListener{
+          presenter.test()
+        }
     }
 
 

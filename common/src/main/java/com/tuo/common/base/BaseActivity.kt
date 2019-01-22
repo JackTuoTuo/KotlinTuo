@@ -1,10 +1,9 @@
-package com.tuo.kotlintuo
+package com.tuo.common.base
 
 import android.content.Context
 import android.os.Bundle
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
-import dagger.android.AndroidInjection
 
 /**
  * <pre>
@@ -18,14 +17,16 @@ import dagger.android.AndroidInjection
 
 abstract class BaseActivity : AppCompatActivity() {
 
+    protected abstract val layoutId: Int
+
     protected lateinit var mContext: Context
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
-        AndroidInjection.inject(this)
         super.onCreate(savedInstanceState)
         this.mContext = this
         initWindow()
-        initLayout()
+        setContentView(layoutId)
         initActivity(savedInstanceState)
     }
 
@@ -35,15 +36,8 @@ abstract class BaseActivity : AppCompatActivity() {
                 or WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN)
     }
 
-    private fun initLayout() {
-        val layoutId = getLayoutId()
-        if (layoutId != 0) {
-            setContentView(layoutId)
-        }
-    }
-
-    abstract fun getLayoutId(): Int
-
     abstract fun initActivity(savedInstanceState: Bundle?)
+
+
 
 }

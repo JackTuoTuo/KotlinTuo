@@ -33,15 +33,11 @@ android {
 
 
 dependencies {
-
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation project(':common')
-
     kapt rootProject.ext.annotationProcessorLibs
-
     //leakCanary
     debugImplementation rootProject.ext.testDeps["leakcanary-debug"]
     releaseImplementation rootProject.ext.testDeps["leakcanary-release"]
-
-
+    implementation project(':mvp')
 }

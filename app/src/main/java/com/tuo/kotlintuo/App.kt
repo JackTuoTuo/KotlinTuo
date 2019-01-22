@@ -5,13 +5,11 @@ import android.app.Application
 import android.os.Bundle
 import com.orhanobut.logger.AndroidLogAdapter
 import com.orhanobut.logger.Logger
-
 import com.squareup.leakcanary.LeakCanary
-import dagger.android.AndroidInjector
-import dagger.android.DispatchingAndroidInjector
-import dagger.android.HasActivityInjector
-import javax.inject.Inject
-
+import org.kodein.di.Kodein
+import org.kodein.di.KodeinAware
+import org.kodein.di.generic.bind
+import org.kodein.di.generic.singleton
 
 /**
  * <pre>
@@ -24,27 +22,28 @@ import javax.inject.Inject
  */
 
 
+class App : Application(), KodeinAware {
 
-
-
-class App : Application(), HasActivityInjector {
-
-    @Inject
-    lateinit var dispatchingAndroidInjector: DispatchingAndroidInjector<Activity>
-
-    override fun activityInjector(): AndroidInjector<Activity> = this.dispatchingAndroidInjector
-
+    override val kodein: Kodein = Kodein.lazy {
+        bind<App>() with singleton { this@App }
+    }
 
     override fun onCreate() {
-        DaggerAppComponent.create().inject(this)
         super.onCreate()
 
         registerActivityLifecycleCallbacks(mActivityLifecycleCallbacks)
 
         // 内存检测
-        LeakCanary.install(this);
+        initLeakCanary()
         // 日志打印
-       Logger.addLogAdapter(AndroidLogAdapter())
+        Logger.addLogAdapter(AndroidLogAdapter())
+    }
+
+    private fun initLeakCanary() {
+        if (LeakCanary.isInAnalyzerProcess(this)) {
+            return
+        }
+        LeakCanary.install(this)
     }
 
     private var mActivityCount = 0

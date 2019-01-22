@@ -1,9 +1,6 @@
 apply plugin: 'com.android.library'
-apply plugin: 'kotlin-kapt'
-
 
 android {
-
     compileSdkVersion rootProject.ext.android.compileSdkVersion
     buildToolsVersion rootProject.ext.android.buildToolsVersion
 
@@ -20,25 +17,13 @@ android {
     buildTypes {
         release {
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
 
 }
 
-
-
 dependencies {
-
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-
-    api rootProject.ext.googleLibs
-    api rootProject.ext.kotlinLibs
-    api rootProject.ext.kodeinLibs
-    api rootProject.ext.retrofitLibs
-    api rootProject.ext.rxJavaLibs
-    api rootProject.ext.commonLibs
-
-    annotationProcessor rootProject.ext.annotationProcessorLibs
-
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation project(':common')
 }
