@@ -1,4 +1,6 @@
 apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 
 
@@ -41,4 +43,7 @@ dependencies {
 
     annotationProcessor rootProject.ext.annotationProcessorLibs
 
+}
+repositories {
+    mavenCentral()
 }

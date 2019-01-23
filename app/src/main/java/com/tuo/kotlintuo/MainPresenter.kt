@@ -1,8 +1,6 @@
 package com.tuo.kotlintuo
 
-import android.util.Log
-import com.tuo.mvp.BasePresenter
-import com.tuo.mvp.MVPActivity
+import com.tuo.mvp.impl.BasePresenter
 
 /**
  * <pre>
@@ -14,11 +12,9 @@ import com.tuo.mvp.MVPActivity
  * </pre>
  */
 
-class MainPresenter(view: MainActivity) : BasePresenter<MVPActivity<MainPresenter>>() {
 
-
+class MainPresenter (override val view:MainActivity):BasePresenter<MainActivity>(){
     fun test() {
-        Log.i("test", "成功")
+        view.mainTest()
     }
-
 }

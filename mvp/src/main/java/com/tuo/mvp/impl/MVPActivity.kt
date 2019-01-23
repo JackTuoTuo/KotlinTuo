@@ -1,36 +1,30 @@
-package com.tuo.mvp
+package com.tuo.mvp.impl
 
 import android.os.Bundle
 import com.tuo.common.base.BaseActivity
-import kotlin.reflect.KClass
-import kotlin.reflect.full.isSubclassOf
-import kotlin.reflect.full.primaryConstructor
-import kotlin.reflect.jvm.jvmErasure
+import com.tuo.mvp.IMvpView
 
 /**
  * <pre>
  *     author : Tuo
  *     e-mail : 839539179@qq.com
- *     time   : 2018/7/6 14:20
- *     desc   : BaseActivity
+ *     time   : 2019/1/23 15:17
+ *     desc   :
  *     version: 1.0
  * </pre>
  */
-abstract class MVPActivity<out P : BasePresenter<MVPActivity<P>>> : BaseActivity(), IMvpView<P> {
+abstract class MVPActivity<out P : BasePresenter<MVPActivity<P>>> : IMvpView<P>, BaseActivity() {
 
     abstract override val presenter: P
-
-    init {
-        presenter.view = this
-    }
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         presenter.onCreate(savedInstanceState)
     }
 
-    override fun onViewStateRestored(savedInstanceState: Bundle?) {}
+    override fun onViewStateRestored(savedInstanceState: Bundle?) {
+        presenter.onCreate(savedInstanceState)
+    }
 
     override fun onStart() {
         super.onStart()
@@ -67,23 +61,4 @@ abstract class MVPActivity<out P : BasePresenter<MVPActivity<P>>> : BaseActivity
         onViewStateRestored(savedInstanceState)
         presenter.onViewStateRestored(savedInstanceState)
     }
-
-
-    private fun createPresenterKt(): P {
-        sequence {
-            var thisClass: KClass<*> = this@MVPActivity::class
-            while (true) {
-                yield(thisClass.supertypes)
-                thisClass = thisClass.supertypes.firstOrNull()?.jvmErasure ?: break
-            }
-        }.flatMap {
-            it.flatMap { it.arguments }.asSequence()
-        }.first {
-            it.type?.jvmErasure?.isSubclassOf(IPresenter::class) ?: false
-        }.let {
-            return it.type!!.jvmErasure.primaryConstructor!!.call() as P
-        }
-    }
-
-
 }

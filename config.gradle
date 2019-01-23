@@ -17,7 +17,7 @@ ext {
             material          : "1.1.0-alpha02",
             recyclerview      : "1.0.0",
 
-            kotlinSdkVerin    : "1.2.71",
+            kotlinSdkVerin    : "1.3.11",
 
             retrofitSdkVersion: "2.4.0",
             okttpSdkVersion   : "3.11.0",
