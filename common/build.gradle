@@ -37,6 +37,7 @@ dependencies {
     api rootProject.ext.googleLibs
     api rootProject.ext.kotlinLibs
     api rootProject.ext.kodeinLibs
+    api rootProject.ext.daggerLibs
     api rootProject.ext.retrofitLibs
     api rootProject.ext.rxJavaLibs
     api rootProject.ext.commonLibs

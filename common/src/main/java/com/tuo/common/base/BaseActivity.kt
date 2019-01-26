@@ -4,6 +4,7 @@ import android.content.Context
 import android.os.Bundle
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
+import dagger.android.AndroidInjection
 
 /**
  * <pre>
@@ -21,8 +22,8 @@ abstract class BaseActivity : AppCompatActivity() {
 
     protected lateinit var mContext: Context
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
+        AndroidInjection.inject(this)
         super.onCreate(savedInstanceState)
         this.mContext = this
         initWindow()

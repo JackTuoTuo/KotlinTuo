@@ -6,6 +6,10 @@ import android.os.Bundle
 import com.orhanobut.logger.AndroidLogAdapter
 import com.orhanobut.logger.Logger
 import com.squareup.leakcanary.LeakCanary
+import dagger.android.AndroidInjector
+import dagger.android.DispatchingAndroidInjector
+import dagger.android.HasActivityInjector
+import javax.inject.Inject
 
 /**
  * <pre>
@@ -18,10 +22,17 @@ import com.squareup.leakcanary.LeakCanary
  */
 
 
-class App : Application() {
+class App : Application(), HasActivityInjector {
 
+    @Inject
+    lateinit var dispatchingAndroidInjector: DispatchingAndroidInjector<Activity>
+
+    override fun activityInjector(): AndroidInjector<Activity> = dispatchingAndroidInjector
 
     override fun onCreate() {
+
+        DaggerMyAppComponent.create().inject(this)
+
         super.onCreate()
 
         registerActivityLifecycleCallbacks(mActivityLifecycleCallbacks)

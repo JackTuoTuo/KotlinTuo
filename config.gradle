@@ -30,7 +30,8 @@ ext {
             anko              : "0.10.7",
             rxBinding         : "3.0.0-alpha2",
             rxlifecycle3      : "3.0.0",
-            kodeinVersion     : "6.0.1"
+            kodeinVersion     : "6.0.1",
+            daggerVersion     : "2.20"
 
 
     ]
@@ -78,6 +79,11 @@ ext {
             "kodein-di-framework-android-x": "org.kodein.di:kodein-di-framework-android-x:${dependVersion.kodeinVersion}"
     ]
 
+    daggerDeps = [
+            "dagger"        : "com.google.dagger:dagger:${dependVersion.daggerVersion}",
+            "dagger_android": "com.google.dagger:dagger-android:${dependVersion.daggerVersion}"
+    ]
+
 
     commonDeps = [
 
@@ -105,7 +111,9 @@ ext {
     ]
 
     annotationDeps = [
-            "glideCompiler"         : "com.github.bumptech.glide:compiler:${dependVersion.glideSdkVersion}",
+            "glideCompiler" : "com.github.bumptech.glide:compiler:${dependVersion.glideSdkVersion}",
+            "dagger"        : "com.google.dagger:dagger-compiler:${dependVersion.daggerVersion}",
+            "dagger_android": "com.google.dagger:dagger-android-processor:${dependVersion.daggerVersion}"
     ]
 
 
@@ -113,6 +121,7 @@ ext {
     googleLibs = googleDeps.values()
     kotlinLibs = kotlinDeps.values()
     kodeinLibs = kodeinDeps.values()
+    daggerLibs = daggerDeps.values()
     commonLibs = commonDeps.values()
     retrofitLibs = retrofit.values()
 

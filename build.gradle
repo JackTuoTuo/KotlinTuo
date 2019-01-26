@@ -11,6 +11,9 @@ buildscript {
     dependencies {
         classpath 'com.android.tools.build:gradle:3.3.0'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+
+        // 使用一下配置要解决的问题 https://www.jianshu.com/p/0ddfbb6405c6
+        classpath 'com.android.tools.build.jetifier:jetifier-processor:1.0.0-beta02'
     }
 }
 
