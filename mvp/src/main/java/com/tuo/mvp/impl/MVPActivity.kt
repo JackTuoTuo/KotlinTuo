@@ -3,6 +3,7 @@ package com.tuo.mvp.impl
 import android.os.Bundle
 import com.tuo.common.base.BaseActivity
 import com.tuo.mvp.IMvpView
+import org.kodein.di.KodeinAware
 
 /**
  * <pre>
@@ -13,7 +14,8 @@ import com.tuo.mvp.IMvpView
  *     version: 1.0
  * </pre>
  */
-abstract class MVPActivity<out P : BasePresenter<MVPActivity<P>>> : IMvpView<P>, BaseActivity() {
+
+abstract class MVPActivity<out P : BasePresenter<MVPActivity<P>>> : IMvpView<P>, BaseActivity(), BaseView, KodeinAware {
 
     abstract override val presenter: P
 
@@ -61,4 +63,7 @@ abstract class MVPActivity<out P : BasePresenter<MVPActivity<P>>> : IMvpView<P>,
         onViewStateRestored(savedInstanceState)
         presenter.onViewStateRestored(savedInstanceState)
     }
+
+    override fun showError(msg: String) = Unit
+
 }
