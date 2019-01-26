@@ -17,6 +17,7 @@ abstract class MVPActivity<out P : BasePresenter<MVPActivity<P>>> : IMvpView<P>,
 
     abstract override val presenter: P
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         presenter.onCreate(savedInstanceState)
@@ -61,4 +62,6 @@ abstract class MVPActivity<out P : BasePresenter<MVPActivity<P>>> : IMvpView<P>,
         onViewStateRestored(savedInstanceState)
         presenter.onViewStateRestored(savedInstanceState)
     }
+
+    override fun showError(msg: String) = Unit
 }

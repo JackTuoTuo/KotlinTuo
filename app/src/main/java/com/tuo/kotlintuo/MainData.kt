@@ -4,13 +4,10 @@ package com.tuo.kotlintuo
  * <pre>
  *     author : Tuo
  *     e-mail : 839539179@qq.com
- *     time   : 2019/1/16 14:58
+ *     time   : 2019/1/26 15:47
  *     desc   :
  *     version: 1.0
  * </pre>
  */
-interface Cooking {
-    fun cook(): String
-}
 
 

@@ -3,27 +3,19 @@ package com.tuo.kotlintuo
 import android.os.Bundle
 import android.util.Log
 import com.tuo.mvp.impl.MVPActivity
-import org.kodein.di.Kodein
-import org.kodein.di.KodeinAware
 
-class MainActivity : MVPActivity<MainPresenter>(),KodeinAware {
+class MainActivity : MVPActivity<MainPresenter>(), MainContract.View {
 
-
-    override val kodein: Kodein= Kodein.lazy {
-
-    }
+    override val presenter = MainPresenter(this)
 
     override val layoutId = R.layout.activity_main
 
-    override val presenter by lazy {
-        MainPresenter(this)
-    }
 
     override fun initActivity(savedInstanceState: Bundle?) {
         presenter.test()
     }
 
-    fun mainTest() {
+    override fun mainTest() {
         Log.i("mainTest", "成功")
     }
 

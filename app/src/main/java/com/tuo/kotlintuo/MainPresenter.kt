@@ -13,8 +13,10 @@ import com.tuo.mvp.impl.BasePresenter
  */
 
 
-class MainPresenter (override val view:MainActivity):BasePresenter<MainActivity>(){
-    fun test() {
+class MainPresenter(override val view: MainActivity)
+    : BasePresenter<MainActivity>(), MainContract.Presenter {
+
+    override fun test() {
         view.mainTest()
     }
 }
