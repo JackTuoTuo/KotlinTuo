@@ -6,10 +6,6 @@ import android.os.Bundle
 import com.orhanobut.logger.AndroidLogAdapter
 import com.orhanobut.logger.Logger
 import com.squareup.leakcanary.LeakCanary
-import org.kodein.di.Kodein
-import org.kodein.di.KodeinAware
-import org.kodein.di.generic.bind
-import org.kodein.di.generic.singleton
 
 /**
  * <pre>
@@ -22,11 +18,8 @@ import org.kodein.di.generic.singleton
  */
 
 
-class App : Application(), KodeinAware {
+class App : Application() {
 
-    override val kodein: Kodein = Kodein.lazy {
-        bind<App>() with singleton { this@App }
-    }
 
     override fun onCreate() {
         super.onCreate()

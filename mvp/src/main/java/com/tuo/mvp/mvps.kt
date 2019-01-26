@@ -2,8 +2,6 @@ package com.tuo.mvp
 
 
 
-
-
 interface IPresenter<out View: IMvpView<IPresenter<View>>>: ILifecycle{
     val view: View
 }

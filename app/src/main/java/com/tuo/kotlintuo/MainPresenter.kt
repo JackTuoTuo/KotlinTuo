@@ -1,6 +1,11 @@
 package com.tuo.kotlintuo
 
 import com.tuo.mvp.impl.BasePresenter
+import org.kodein.di.Kodein
+import org.kodein.di.KodeinAware
+import org.kodein.di.generic.bind
+import org.kodein.di.generic.instance
+import org.kodein.di.generic.singleton
 
 /**
  * <pre>
@@ -13,8 +18,10 @@ import com.tuo.mvp.impl.BasePresenter
  */
 
 
+
 class MainPresenter(override val view: MainActivity)
     : BasePresenter<MainActivity>(), MainContract.Presenter {
+
 
     override fun test() {
         view.mainTest()
